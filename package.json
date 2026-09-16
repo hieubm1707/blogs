@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vitepress --open",
+    "cms:proxy": "npx decap-server",
     "build": "vitepress build",
     "serve": "vitepress serve",
     "preview": "vitepress preview"

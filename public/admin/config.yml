@@ -1,0 +1,25 @@
+backend:
+  name: git-gateway
+  repo: hieubm1707/blogs # Ví dụ: username/vue-blog
+  branch: main # Đổi thành master hoặc main tùy repo GitHub của bạn
+
+# Chế độ làm việc local (khi dev máy tính thì tự động lưu vào file mà không cần qua GitHub API)
+local_backend: true
+
+# Nơi lưu trữ và đường dẫn ảnh upload
+media_folder: 'public/images'
+public_folder: '/images'
+
+collections:
+  - name: 'posts'
+    label: 'Bài viết'
+    folder: 'posts'
+    create: true
+    slug: '{{slug}}'
+    fields:
+      - { label: 'Tiêu đề', name: 'title', widget: 'string' }
+      - { label: 'Ngày đăng', name: 'date', widget: 'datetime', format: 'YYYY-MM-DD', date_format: 'YYYY-MM-DD', time_format: false }
+      - { label: 'Tác giả', name: 'author', widget: 'string', default: 'Admin' }
+      - { label: 'Gravatar (MD5 Email)', name: 'gravatar', widget: 'string', required: false }
+      - { label: 'Twitter Handle', name: 'twitter', widget: 'string', required: false }
+      - { label: 'Nội dung bài viết', name: 'body', widget: 'markdown' }

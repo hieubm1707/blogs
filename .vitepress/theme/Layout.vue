@@ -39,13 +39,6 @@ const { page, frontmatter } = useData()
           >
             Bài viết (Blogs)
           </a>
-          <a
-            class="px-3 py-1.5 rounded-lg text-xs font-medium bg-gray-100 hover:bg-gray-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-gray-700 dark:text-gray-200 transition"
-            href="/admin/"
-            target="_blank"
-          >
-            Quản trị ↗
-          </a>
         </nav>
       </header>
     </div>

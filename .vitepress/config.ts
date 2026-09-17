@@ -5,6 +5,7 @@ export default defineConfig({
   title: 'The Vue Point',
   description: 'The official blog for the Vue.js project',
   cleanUrls: true,
+  srcExclude: ['README.md', 'CLAUDE.md'],
   head: [
     ['meta', { name: 'twitter:site', content: '@vuejs' }],
     ['meta', { name: 'twitter:card', content: 'summary' }],

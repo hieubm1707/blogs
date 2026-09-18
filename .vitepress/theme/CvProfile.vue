@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import { useData } from 'vitepress'
+import { useLocale } from './useLocale'
 
 const { frontmatter } = useData()
+const { config, t } = useLocale()
 </script>
 
 <template>
@@ -17,7 +19,7 @@ const { frontmatter } = useData()
           </div>
 
           <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight text-gray-900 dark:text-white leading-tight">
-            Hi, I'm <br class="hidden sm:block" />
+            {{ t('greeting') }} <br class="hidden sm:block" />
             <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-teal-500 dark:from-emerald-400 dark:to-teal-300">
               {{ frontmatter.name }}
             </span>
@@ -55,13 +57,13 @@ const { frontmatter } = useData()
               target="_blank"
               class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl text-sm font-semibold bg-emerald-600 text-white hover:bg-emerald-700 active:scale-[0.98] transition shadow-md shadow-emerald-600/20"
             >
-              <span>📄</span> Download CV (PDF)
+              <span>📄</span> {{ t('downloadCv') }}
             </a>
             <a 
-              href="/blogs" 
+              :href="config.prefix + '/blogs'" 
               class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl text-sm font-semibold border border-gray-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-gray-800 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-slate-700/80 active:scale-[0.98] transition shadow-sm"
             >
-              <span>✍️</span> Read my blog
+              <span>✍️</span> {{ t('readBlog') }}
             </a>
           </div>
         </div>
@@ -71,7 +73,7 @@ const { frontmatter } = useData()
             <div class="absolute -inset-1 rounded-3xl bg-gradient-to-r from-emerald-500 to-teal-500 opacity-30 blur group-hover:opacity-60 transition duration-500"></div>
             <img 
               :src="frontmatter.avatar" 
-              alt="Avatar" 
+              :alt="frontmatter.name" 
               class="relative w-36 h-36 sm:w-44 sm:h-44 md:w-52 md:h-52 rounded-3xl object-cover ring-2 ring-white dark:ring-slate-900 shadow-2xl"
             />
           </div>
@@ -95,9 +97,9 @@ const { frontmatter } = useData()
     <section v-if="frontmatter.experiences" class="space-y-8">
       <div class="flex items-center justify-between pb-3 border-b border-gray-200 dark:border-slate-800">
         <h2 class="text-2xl font-bold tracking-tight text-gray-900 dark:text-white flex items-center gap-2.5">
-          <span>💼</span> Work Experience
+          <span>💼</span> {{ t('workExperience') }}
         </h2>
-        <span class="text-xs font-mono text-gray-500 dark:text-gray-400">Timeline</span>
+        <span class="text-xs font-mono text-gray-500 dark:text-gray-400">{{ t('timeline') }}</span>
       </div>
 
       <div class="space-y-8 border-l-2 border-emerald-500/30 pl-6 ml-3">
@@ -147,9 +149,9 @@ const { frontmatter } = useData()
     <section v-if="frontmatter.skillGroups" class="space-y-8">
       <div class="flex items-center justify-between pb-3 border-b border-gray-200 dark:border-slate-800">
         <h2 class="text-2xl font-bold tracking-tight text-gray-900 dark:text-white flex items-center gap-2.5">
-          <span>🛠️</span> Skills
+          <span>🛠️</span> {{ t('skills') }}
         </h2>
-        <span class="text-xs font-mono text-gray-500 dark:text-gray-400">Tech Stack</span>
+        <span class="text-xs font-mono text-gray-500 dark:text-gray-400">{{ t('techStack') }}</span>
       </div>
 
       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
@@ -179,9 +181,9 @@ const { frontmatter } = useData()
     <section v-if="frontmatter.projects" class="space-y-8">
       <div class="flex items-center justify-between pb-3 border-b border-gray-200 dark:border-slate-800">
         <h2 class="text-2xl font-bold tracking-tight text-gray-900 dark:text-white flex items-center gap-2.5">
-          <span>🚀</span> Featured Projects
+          <span>🚀</span> {{ t('featuredProjects') }}
         </h2>
-        <span class="text-xs font-mono text-gray-500 dark:text-gray-400">Selected Works</span>
+        <span class="text-xs font-mono text-gray-500 dark:text-gray-400">{{ t('selectedWorks') }}</span>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -204,7 +206,7 @@ const { frontmatter } = useData()
                   :href="project.github" 
                   target="_blank" 
                   class="text-gray-500 hover:text-emerald-600 dark:hover:text-emerald-400 transition"
-                  title="Source code"
+                  :title="t('sourceCode')"
                 >
                   GitHub ↗
                 </a>
@@ -213,9 +215,9 @@ const { frontmatter } = useData()
                   :href="project.link" 
                   target="_blank" 
                   class="font-medium text-emerald-600 dark:text-emerald-400 hover:underline"
-                  title="Demo / Live site"
+                  :title="t('liveDemoTitle')"
                 >
-                  Live Demo ↗
+                  {{ t('liveDemo') }} ↗
                 </a>
               </div>
             </div>
@@ -252,7 +254,7 @@ const { frontmatter } = useData()
       <!-- Education -->
       <div v-if="frontmatter.education" class="space-y-4">
         <h2 class="text-xl font-bold tracking-tight text-gray-900 dark:text-white flex items-center gap-2 pb-2 border-b border-gray-200 dark:border-slate-800">
-          <span>🎓</span> Education
+          <span>🎓</span> {{ t('education') }}
         </h2>
         <div class="space-y-4">
           <div 
@@ -273,7 +275,7 @@ const { frontmatter } = useData()
       <!-- Certifications -->
       <div v-if="frontmatter.certifications" class="space-y-4">
         <h2 class="text-xl font-bold tracking-tight text-gray-900 dark:text-white flex items-center gap-2 pb-2 border-b border-gray-200 dark:border-slate-800">
-          <span>📜</span> Certifications & Awards
+          <span>📜</span> {{ t('certifications') }}
         </h2>
         <div class="space-y-3">
           <div 
@@ -294,10 +296,10 @@ const { frontmatter } = useData()
     <!-- 7. Call to action -->
     <section class="p-8 sm:p-10 rounded-3xl bg-gradient-to-br from-emerald-500/10 via-teal-500/5 to-transparent border border-emerald-500/20 text-center space-y-4">
       <h2 class="text-2xl sm:text-3xl font-extrabold text-gray-900 dark:text-white">
-        Have a project or an opportunity in mind?
+        {{ t('ctaTitle') }}
       </h2>
       <p class="text-sm sm:text-base text-gray-600 dark:text-gray-300 max-w-xl mx-auto">
-        I'm always happy to talk about technical challenges, career opportunities, or building something interesting together.
+        {{ t('ctaText') }}
       </p>
       <div class="pt-2 flex justify-center gap-4">
         <a 
@@ -305,7 +307,7 @@ const { frontmatter } = useData()
           :href="'mailto:' + frontmatter.email" 
           class="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-sm font-semibold bg-emerald-600 text-white hover:bg-emerald-700 transition shadow-md shadow-emerald-600/20"
         >
-          <span>✉️</span> Send me a message
+          <span>✉️</span> {{ t('sendMessage') }}
         </a>
       </div>
     </section>

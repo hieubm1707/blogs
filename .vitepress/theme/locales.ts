@@ -8,8 +8,7 @@ export const locales = {
     lang: 'en-US',
     // URL prefix of this locale ('' = site root)
     prefix: '',
-    // Where the "About" nav link points. There is no Vietnamese CV yet, so
-    // both locales use the English one; set vi to '/vi/' once vi/index.md exists.
+    // CV page of this locale (index.md / vi/index.md)
     home: '/',
     messages: {
       about: 'About',
@@ -20,13 +19,32 @@ export const locales = {
       backToBlog: '← Back to the blog',
       publishedOn: 'Published on',
       notFound: '404 Page Not Found',
-      switchLocale: 'Tiếng Việt'
+      switchLocale: 'Tiếng Việt',
+      // CV page
+      greeting: "Hi, I'm",
+      downloadCv: 'Download CV (PDF)',
+      readBlog: 'Read my blog',
+      workExperience: 'Work Experience',
+      timeline: 'Timeline',
+      skills: 'Skills',
+      techStack: 'Tech Stack',
+      featuredProjects: 'Featured Projects',
+      selectedWorks: 'Selected Works',
+      education: 'Education',
+      certifications: 'Certifications & Awards',
+      sourceCode: 'Source code',
+      liveDemo: 'Live Demo',
+      liveDemoTitle: 'Demo / Live site',
+      ctaTitle: 'Have a project or an opportunity in mind?',
+      ctaText:
+        "I'm always happy to talk about technical challenges, career opportunities, or building something interesting together.",
+      sendMessage: 'Send me a message'
     }
   },
   vi: {
     lang: 'vi-VN',
     prefix: '/vi',
-    home: '/',
+    home: '/vi/',
     messages: {
       about: 'Giới thiệu',
       blog: 'Blog',
@@ -36,7 +54,26 @@ export const locales = {
       backToBlog: '← Quay lại danh sách bài viết',
       publishedOn: 'Đăng ngày',
       notFound: '404 Không tìm thấy trang',
-      switchLocale: 'English'
+      switchLocale: 'English',
+      // CV page
+      greeting: 'Xin chào, tôi là',
+      downloadCv: 'Tải CV (PDF)',
+      readBlog: 'Đọc blog của tôi',
+      workExperience: 'Kinh nghiệm làm việc',
+      timeline: 'Hành trình',
+      skills: 'Kỹ năng',
+      techStack: 'Công nghệ',
+      featuredProjects: 'Dự án tiêu biểu',
+      selectedWorks: 'Dự án chọn lọc',
+      education: 'Học vấn',
+      certifications: 'Chứng chỉ & Thành tích',
+      sourceCode: 'Mã nguồn',
+      liveDemo: 'Xem demo',
+      liveDemoTitle: 'Demo / Trang chạy thật',
+      ctaTitle: 'Bạn có dự án hoặc cơ hội muốn trao đổi?',
+      ctaText:
+        'Tôi luôn sẵn lòng trao đổi về các bài toán kỹ thuật, cơ hội nghề nghiệp, hoặc cùng nhau xây dựng những sản phẩm thú vị.',
+      sendMessage: 'Gửi tin nhắn cho tôi'
     }
   }
 } as const

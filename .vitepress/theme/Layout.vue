@@ -20,11 +20,12 @@ const isBlogList = computed(
   () => frontmatter.value.pageType === 'blog' || page.value.relativePath.endsWith('blogs.md')
 )
 
-// Link to the same page in the other language. The CV is English-only for
-// now, so the switcher only shows on the blog list and on translated posts.
+// Link to the same page in the other language. Posts only get a switcher
+// when a translation with the same slug exists.
 const otherLocale = computed(() => (locale.value === 'en' ? 'vi' : 'en'))
 const switchLink = computed(() => {
-  if (page.value.isNotFound || isCv.value) return null
+  if (page.value.isNotFound) return null
+  if (isCv.value) return locales[otherLocale.value].home
   if (isBlogList.value) return locales[otherLocale.value].prefix + '/blogs'
   const current = posts.find((p) => p.url === route.path)
   const translation = current
@@ -39,7 +40,7 @@ const switchLink = computed(() => {
     <div class="max-w-3xl mx-auto px-4 sm:px-6 xl:max-w-5xl xl:px-0">
       <header class="flex justify-between items-center py-8 border-b border-gray-100 dark:border-slate-800">
         <!-- Logo / Home Link -->
-        <a class="flex items-center gap-2.5 text-xl font-bold tracking-tight text-gray-900 dark:text-white" href="/" aria-label="Home">
+        <a class="flex items-center gap-2.5 text-xl font-bold tracking-tight text-gray-900 dark:text-white" :href="config.home" aria-label="Home">
           <img
             class="inline-block w-8 h-8 dark:invert"
             alt="logo"

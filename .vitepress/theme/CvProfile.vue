@@ -7,28 +7,28 @@ const { frontmatter } = useData()
 <template>
   <div class="space-y-16 pb-24 text-gray-800 dark:text-gray-200">
     
-    <!-- 1. Hero / Giới thiệu cá nhân -->
+    <!-- 1. Hero -->
     <section class="pt-6 pb-12 border-b border-gray-200 dark:border-slate-800">
       <div class="flex flex-col-reverse md:flex-row items-start md:items-center justify-between gap-10">
         <div class="space-y-5 max-w-2xl">
-          <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-700 dark:bg-emerald-950/60 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800">
+          <div v-if="frontmatter.status" class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-700 dark:bg-emerald-950/60 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800">
             <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
-            {{ frontmatter.status || 'Đang mở cho các cơ hội hợp tác mới' }}
+            {{ frontmatter.status }}
           </div>
 
           <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight text-gray-900 dark:text-white leading-tight">
-            Xin chào, tôi là <br class="hidden sm:block" />
+            Hi, I'm <br class="hidden sm:block" />
             <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-teal-500 dark:from-emerald-400 dark:to-teal-300">
-              {{ frontmatter.name || 'Nguyễn Văn A' }}
+              {{ frontmatter.name }}
             </span>
           </h1>
 
-          <p class="text-xl font-medium text-gray-700 dark:text-gray-300">
-            {{ frontmatter.headline || 'Senior Fullstack Engineer & Software Architect' }}
+          <p v-if="frontmatter.headline" class="text-xl font-medium text-gray-700 dark:text-gray-300">
+            {{ frontmatter.headline }}
           </p>
 
-          <p class="text-base text-gray-600 dark:text-gray-400 leading-relaxed">
-            {{ frontmatter.bio || 'Hơn 5 năm kinh nghiệm trong việc thiết kế, xây dựng và vận hành các hệ thống web quy mô lớn, kiến trúc microservices và giao diện người dùng tối ưu hóa trải nghiệm. Yêu thích mã nguồn mở và chia sẻ kiến thức cộng đồng.' }}
+          <p v-if="frontmatter.bio" class="text-base text-gray-600 dark:text-gray-400 leading-relaxed">
+            {{ frontmatter.bio }}
           </p>
 
           <!-- Quick contact & Links -->
@@ -55,13 +55,13 @@ const { frontmatter } = useData()
               target="_blank"
               class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl text-sm font-semibold bg-emerald-600 text-white hover:bg-emerald-700 active:scale-[0.98] transition shadow-md shadow-emerald-600/20"
             >
-              <span>📄</span> Tải CV (PDF)
+              <span>📄</span> Download CV (PDF)
             </a>
             <a 
               href="/blogs" 
               class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl text-sm font-semibold border border-gray-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-gray-800 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-slate-700/80 active:scale-[0.98] transition shadow-sm"
             >
-              <span>✍️</span> Xem bài viết Blog
+              <span>✍️</span> Read my blog
             </a>
           </div>
         </div>
@@ -79,7 +79,7 @@ const { frontmatter } = useData()
       </div>
     </section>
 
-    <!-- 2. Thống kê nhanh / Highlights -->
+    <!-- 2. Highlights -->
     <section v-if="frontmatter.highlights" class="grid grid-cols-2 sm:grid-cols-4 gap-4">
       <div 
         v-for="(item, idx) in frontmatter.highlights" 
@@ -91,11 +91,11 @@ const { frontmatter } = useData()
       </div>
     </section>
 
-    <!-- 3. Kinh nghiệm làm việc (Work Experience) -->
-    <section class="space-y-8">
+    <!-- 3. Work Experience -->
+    <section v-if="frontmatter.experiences" class="space-y-8">
       <div class="flex items-center justify-between pb-3 border-b border-gray-200 dark:border-slate-800">
         <h2 class="text-2xl font-bold tracking-tight text-gray-900 dark:text-white flex items-center gap-2.5">
-          <span>💼</span> Kinh nghiệm làm việc
+          <span>💼</span> Work Experience
         </h2>
         <span class="text-xs font-mono text-gray-500 dark:text-gray-400">Timeline</span>
       </div>
@@ -124,12 +124,12 @@ const { frontmatter } = useData()
 
           <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">{{ exp.description }}</p>
 
-          <!-- Thành tựu / Điểm nổi bật -->
+          <!-- Achievements -->
           <ul v-if="exp.achievements" class="space-y-1.5 pl-4 text-xs text-gray-600 dark:text-gray-400 list-disc">
             <li v-for="(ach, i) in exp.achievements" :key="i">{{ ach }}</li>
           </ul>
 
-          <!-- Tech stack sử dụng tại cty -->
+          <!-- Tech stack -->
           <div v-if="exp.techs" class="flex flex-wrap gap-1.5 pt-1">
             <span 
               v-for="t in exp.techs" 
@@ -143,11 +143,11 @@ const { frontmatter } = useData()
       </div>
     </section>
 
-    <!-- 4. Kỹ năng chuyên môn (Skills & Technologies) -->
-    <section class="space-y-8">
+    <!-- 4. Skills -->
+    <section v-if="frontmatter.skillGroups" class="space-y-8">
       <div class="flex items-center justify-between pb-3 border-b border-gray-200 dark:border-slate-800">
         <h2 class="text-2xl font-bold tracking-tight text-gray-900 dark:text-white flex items-center gap-2.5">
-          <span>🛠️</span> Kỹ năng & Chuyên môn
+          <span>🛠️</span> Skills
         </h2>
         <span class="text-xs font-mono text-gray-500 dark:text-gray-400">Tech Stack</span>
       </div>
@@ -175,11 +175,11 @@ const { frontmatter } = useData()
       </div>
     </section>
 
-    <!-- 5. Dự án tiêu biểu (Featured Projects) -->
-    <section class="space-y-8">
+    <!-- 5. Featured Projects -->
+    <section v-if="frontmatter.projects" class="space-y-8">
       <div class="flex items-center justify-between pb-3 border-b border-gray-200 dark:border-slate-800">
         <h2 class="text-2xl font-bold tracking-tight text-gray-900 dark:text-white flex items-center gap-2.5">
-          <span>🚀</span> Dự án tiêu biểu
+          <span>🚀</span> Featured Projects
         </h2>
         <span class="text-xs font-mono text-gray-500 dark:text-gray-400">Selected Works</span>
       </div>
@@ -192,9 +192,12 @@ const { frontmatter } = useData()
         >
           <div class="space-y-3">
             <div class="flex items-start justify-between gap-4">
-              <h3 class="text-lg font-bold text-gray-900 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition">
-                {{ project.name }}
-              </h3>
+              <div>
+                <h3 class="text-lg font-bold text-gray-900 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition">
+                  {{ project.name }}
+                </h3>
+                <div v-if="project.period" class="text-xs font-mono text-gray-500 dark:text-gray-400">{{ project.period }}</div>
+              </div>
               <div class="flex items-center gap-3 shrink-0 text-sm">
                 <a 
                   v-if="project.github" 
@@ -221,13 +224,13 @@ const { frontmatter } = useData()
               {{ project.description }}
             </p>
 
-            <!-- Điểm nổi bật dự án -->
+            <!-- Project highlights -->
             <ul v-if="project.highlights" class="space-y-1 text-xs text-gray-500 dark:text-gray-400 list-disc pl-4">
               <li v-for="(h, hi) in project.highlights" :key="hi">{{ h }}</li>
             </ul>
           </div>
 
-          <div class="flex flex-wrap gap-1.5 pt-4 mt-4 border-t border-gray-100 dark:border-slate-800">
+          <div v-if="project.techs" class="flex flex-wrap gap-1.5 pt-4 mt-4 border-t border-gray-100 dark:border-slate-800">
             <span 
               v-for="tech in project.techs" 
               :key="tech"
@@ -240,12 +243,16 @@ const { frontmatter } = useData()
       </div>
     </section>
 
-    <!-- 6. Học vấn & Chứng chỉ (Education & Certifications) -->
-    <section v-if="frontmatter.education || frontmatter.certifications" class="grid grid-cols-1 md:grid-cols-2 gap-8">
-      <!-- Học vấn -->
+    <!-- 6. Education & Certifications -->
+    <section
+      v-if="frontmatter.education || frontmatter.certifications"
+      class="grid grid-cols-1 gap-8"
+      :class="{ 'md:grid-cols-2': frontmatter.education && frontmatter.certifications }"
+    >
+      <!-- Education -->
       <div v-if="frontmatter.education" class="space-y-4">
         <h2 class="text-xl font-bold tracking-tight text-gray-900 dark:text-white flex items-center gap-2 pb-2 border-b border-gray-200 dark:border-slate-800">
-          <span>🎓</span> Học vấn
+          <span>🎓</span> Education
         </h2>
         <div class="space-y-4">
           <div 
@@ -255,7 +262,7 @@ const { frontmatter } = useData()
           >
             <div class="flex items-center justify-between">
               <h3 class="font-bold text-sm text-gray-900 dark:text-white">{{ edu.degree }}</h3>
-              <span class="text-xs text-gray-500 font-mono">{{ edu.period }}</span>
+              <span v-if="edu.period" class="text-xs text-gray-500 font-mono">{{ edu.period }}</span>
             </div>
             <div class="text-xs text-emerald-600 dark:text-emerald-400 font-medium">{{ edu.school }}</div>
             <p v-if="edu.description" class="text-xs text-gray-600 dark:text-gray-400 pt-1">{{ edu.description }}</p>
@@ -263,10 +270,10 @@ const { frontmatter } = useData()
         </div>
       </div>
 
-      <!-- Chứng chỉ -->
+      <!-- Certifications -->
       <div v-if="frontmatter.certifications" class="space-y-4">
         <h2 class="text-xl font-bold tracking-tight text-gray-900 dark:text-white flex items-center gap-2 pb-2 border-b border-gray-200 dark:border-slate-800">
-          <span>📜</span> Chứng chỉ & Thành tích
+          <span>📜</span> Certifications & Awards
         </h2>
         <div class="space-y-3">
           <div 
@@ -284,13 +291,13 @@ const { frontmatter } = useData()
       </div>
     </section>
 
-    <!-- 7. Call To Action / Liên hệ -->
+    <!-- 7. Call to action -->
     <section class="p-8 sm:p-10 rounded-3xl bg-gradient-to-br from-emerald-500/10 via-teal-500/5 to-transparent border border-emerald-500/20 text-center space-y-4">
       <h2 class="text-2xl sm:text-3xl font-extrabold text-gray-900 dark:text-white">
-        Bạn đang có dự án hoặc cơ hội muốn trao đổi?
+        Have a project or an opportunity in mind?
       </h2>
       <p class="text-sm sm:text-base text-gray-600 dark:text-gray-300 max-w-xl mx-auto">
-        Tôi luôn sẵn sàng thảo luận về các giải pháp kỹ thuật, cơ hội nghề nghiệp hoặc cùng nhau xây dựng các sản phẩm thú vị.
+        I'm always happy to talk about technical challenges, career opportunities, or building something interesting together.
       </p>
       <div class="pt-2 flex justify-center gap-4">
         <a 
@@ -298,7 +305,7 @@ const { frontmatter } = useData()
           :href="'mailto:' + frontmatter.email" 
           class="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-sm font-semibold bg-emerald-600 text-white hover:bg-emerald-700 transition shadow-md shadow-emerald-600/20"
         >
-          <span>✉️</span> Gửi tin nhắn cho tôi
+          <span>✉️</span> Send me a message
         </a>
       </div>
     </section>

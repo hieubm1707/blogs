@@ -69,6 +69,8 @@ Sau đó mở `http://localhost:5173/admin/`. Nhớ commit và push các file CM
 │       ├── author.ts         # Thông tin tác giả cố định: tên, avatar, LinkedIn
 │       ├── locales.ts        # Ngôn ngữ, chữ giao diện EN/VI, map URL bài viết
 │       ├── useLocale.ts      # Composable t() lấy chữ theo ngôn ngữ trang
+│       ├── LocaleSwitcher.vue, Flag.vue  # Nút chuyển ngôn ngữ bằng cờ (SVG)
+│       ├── ThemeToggle.vue, theme.ts     # Nút sáng/tối, mặc định sáng
 │       ├── Author.vue, Date.vue, NotFound.vue
 │       ├── posts.data.ts     # Data loader: đọc posts/*.md và sắp xếp theo ngày
 │       └── style.css
@@ -133,7 +135,8 @@ Mỗi lần push lên `main`, dù từ máy hay từ CMS, Netlify sẽ tự buil
 ## Ghi chú
 
 - Giao diện mặc định là tiếng Anh; tiếng Việt nằm dưới `/vi/`. Chữ giao diện của cả hai ngôn ngữ nằm trong `.vitepress/theme/locales.ts`.
-- Cả CV và blog đều có hai ngôn ngữ; nút chuyển ngôn ngữ nằm trên header. Tiêu đề mục và nút bấm của trang CV cũng lấy từ `locales.ts`.
+- Cả CV và blog đều có hai ngôn ngữ. Trên header có cờ 🇬🇧/🇻🇳 để chuyển ngôn ngữ (cờ mờ nghĩa là bài chưa có bản dịch) và nút chuyển giao diện sáng/tối. Giao diện mặc định là sáng, lựa chọn của người xem được lưu trong trình duyệt.
+- CV không công khai số liệu kinh doanh của công ty (số người dùng, MAU…) vì cam kết bảo mật. Tiêu đề mục và nút bấm của trang CV cũng lấy từ `locales.ts`.
 - Domain production là `https://hieubm.netlify.app`. Nếu đổi domain, sửa `baseUrl` trong `.vitepress/genFeed.ts` và thẻ `twitter:image` trong `.vitepress/config.ts`.
 - Ảnh upload từ CMS được lưu vào `public/images/` (cùng thư mục với avatar `avatar.png`).
 - `vercel.json` còn sót lại từ bản fork [vuejs/blog](https://github.com/vuejs/blog); host thật là Netlify.

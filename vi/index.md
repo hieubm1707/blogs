@@ -4,7 +4,7 @@ pageType: cv
 status: 'Software engineer · Sẵn sàng cho những cuộc trò chuyện thú vị'
 name: 'Bùi Minh Hiếu'
 headline: 'Software Engineer'
-bio: 'Kỹ sư phần mềm tập trung vào backend, với nền tảng vững về mobile và Flutter. Tôi xây dựng và vận hành backend cho một nền tảng dịch vụ làm đẹp với khoảng 200K người dùng, và luôn quan tâm đến những hệ thống hiệu năng cao, sẵn sàng cao, dễ mở rộng và an toàn. Tôi cũng thích viết lại những gì mình học được trên hành trình đó.'
+bio: 'Kỹ sư phần mềm tập trung vào backend, với nền tảng vững về mobile và Flutter. Tôi xây dựng và vận hành backend cho các ứng dụng khách hàng của một công ty dịch vụ làm đẹp, và luôn quan tâm đến những hệ thống hiệu năng cao, sẵn sàng cao, dễ mở rộng và an toàn. Tôi cũng thích viết lại những gì mình học được trên hành trình đó.'
 location: 'TP. Hồ Chí Minh, Việt Nam'
 email: 'hieubm1707@gmail.com'
 github: 'https://github.com/hieubm1707'
@@ -14,10 +14,10 @@ avatar: '/images/avatar.png'
 highlights:
   - value: '4+ năm'
     label: 'Kinh nghiệm làm việc'
-  - value: '200K+'
-    label: 'Người dùng trên các ứng dụng tôi phát triển'
-  - value: '10K'
-    label: 'Người dùng hoạt động mỗi tháng'
+  - value: '20M+'
+    label: 'Dòng dữ liệu trong bảng tôi đã tối ưu'
+  - value: '~100 ms'
+    label: 'Thời gian truy vấn API sau tối ưu'
   - value: '10+'
     label: 'Dự án đã triển khai'
 
@@ -43,7 +43,7 @@ experiences:
     company: 'NGOC DUNG AESTHETIC CO.,LTD'
     location: 'TP. Hồ Chí Minh'
     period: '09/2023 - 03/2024'
-    description: 'Gia nhập phòng IT để phát triển ứng dụng Ngọc Dung Beauty (~200K người dùng, ~10K người dùng hoạt động mỗi tháng) và các sản phẩm liên quan bằng Flutter.'
+    description: 'Gia nhập phòng IT để phát triển ứng dụng Ngọc Dung Beauty và các sản phẩm liên quan bằng Flutter.'
     achievements:
       - 'Phụ trách chính tính năng đặt lịch của ứng dụng Ngọc Dung Beauty và hỗ trợ bảo trì các tính năng khác.'
       - 'Phụ trách chính tính năng đặt lịch của Ngọc Dung Zalo Mini App.'
@@ -120,7 +120,7 @@ projects:
 
   - name: 'Ngoc Dung Beauty App'
     period: '09/2023 - Hiện tại'
-    description: 'Ứng dụng dành cho khách hàng của Thẩm mỹ Ngọc Dung, với khoảng 200K người dùng và 10K người dùng hoạt động mỗi tháng.'
+    description: 'Ứng dụng dành cho khách hàng của Thẩm mỹ Ngọc Dung để đặt lịch và quản lý dịch vụ làm đẹp.'
     highlights:
       - 'Phụ trách chính tính năng đặt lịch và hỗ trợ bảo trì các tính năng khác (09/2023 - 02/2024).'
       - 'Bổ sung tính năng chat và gọi điện (05/2025 - 06/2025): bảo trì Chatwoot và viết API tích hợp mới cho chat; xây dựng hệ thống call center trên LiveKit để quản lý room, token và lịch sử cuộc gọi, kèm JavaScript calling SDK nhúng được vào nhiều sản phẩm.'

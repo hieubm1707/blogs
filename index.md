@@ -4,7 +4,7 @@ pageType: cv
 status: 'Software engineer · Open to interesting conversations'
 name: 'Bùi Minh Hiếu'
 headline: 'Software Engineer'
-bio: 'Software Engineer focused on backend development, with a solid background in mobile and Flutter. I build and run the backend behind a beauty-services platform with around 200K users, and I care about systems that are performant, highly available, scalable and secure. I also enjoy writing about what I learn along the way.'
+bio: 'Software Engineer focused on backend development, with a solid background in mobile and Flutter. I build and run the backend behind the customer apps of a beauty-services company, and I care about systems that are performant, highly available, scalable and secure. I also enjoy writing about what I learn along the way.'
 location: 'Ho Chi Minh City, Vietnam'
 email: 'hieubm1707@gmail.com'
 github: 'https://github.com/hieubm1707'
@@ -14,10 +14,10 @@ avatar: '/images/avatar.png'
 highlights:
   - value: '4+ years'
     label: 'Professional experience'
-  - value: '200K+'
-    label: 'Users on apps I work on'
-  - value: '10K'
-    label: 'Monthly active users'
+  - value: '20M+'
+    label: 'Rows in a table I optimized'
+  - value: '~100 ms'
+    label: 'API lookups after optimization'
   - value: '10+'
     label: 'Projects delivered'
 
@@ -43,7 +43,7 @@ experiences:
     company: 'NGOC DUNG AESTHETIC CO.,LTD'
     location: 'Ho Chi Minh City'
     period: '09/2023 - 03/2024'
-    description: 'Joined the IT department to develop the Ngoc Dung Beauty app (~200K users, ~10K monthly active users) and related products with Flutter.'
+    description: 'Joined the IT department to develop the Ngoc Dung Beauty app and related products with Flutter.'
     achievements:
       - 'Owned the appointment booking feature of the Ngoc Dung Beauty app and helped maintain its other features.'
       - 'Owned the booking feature of the Ngoc Dung Zalo Mini App.'
@@ -120,7 +120,7 @@ projects:
 
   - name: 'Ngoc Dung Beauty App'
     period: '09/2023 - Present'
-    description: 'The customer app of Ngoc Dung Aesthetic, with around 200K users and 10K monthly active users.'
+    description: 'The customer app of Ngoc Dung Aesthetic for booking and managing beauty services.'
     highlights:
       - 'Owned the appointment booking feature and helped maintain other features (09/2023 - 02/2024).'
       - 'Added chat and call features (05/2025 - 06/2025): maintained Chatwoot and wrote new integration APIs for chat; built a LiveKit-based call center service for rooms, tokens and call history, plus a JavaScript calling SDK that can be embedded in multiple products.'

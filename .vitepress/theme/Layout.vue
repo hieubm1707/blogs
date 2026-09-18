@@ -5,6 +5,8 @@ import CvProfile from './CvProfile.vue'
 import BlogList from './BlogList.vue'
 import Article from './Article.vue'
 import NotFound from './NotFound.vue'
+import LocaleSwitcher from './LocaleSwitcher.vue'
+import ThemeToggle from './ThemeToggle.vue'
 import { data as posts } from './posts.data.js'
 import { locales } from './locales'
 import { useLocale } from './useLocale'
@@ -65,14 +67,8 @@ const switchLink = computed(() => {
           >
             {{ t('blog') }}
           </a>
-          <a
-            v-if="switchLink"
-            class="px-2.5 py-1 rounded-lg border border-gray-200 dark:border-slate-700 text-xs transition hover:text-emerald-600 dark:hover:text-emerald-400 hover:border-emerald-500"
-            :href="switchLink"
-            :hreflang="locales[otherLocale].lang"
-          >
-            {{ t('switchLocale') }}
-          </a>
+          <LocaleSwitcher :switch-link="switchLink" />
+          <ThemeToggle />
         </nav>
       </header>
     </div>

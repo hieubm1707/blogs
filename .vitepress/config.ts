@@ -1,5 +1,6 @@
 import { defineConfig } from 'vitepress'
 import { genFeed } from './genFeed.js'
+import { themeInitScript } from './theme/theme.js'
 
 export default defineConfig({
   lang: 'en-US',
@@ -7,6 +8,9 @@ export default defineConfig({
   description:
     'CV and blog of Bùi Minh Hiếu, a backend-focused Software Engineer.',
   cleanUrls: true,
+  // VitePress' built-in dark mode follows the OS preference; the site uses its
+  // own light-by-default toggle instead (theme/theme.ts, ThemeToggle.vue)
+  appearance: false,
   srcExclude: ['README.md', 'CLAUDE.md', 'cv.md'],
   locales: {
     root: { label: 'English', lang: 'en-US' },
@@ -26,6 +30,7 @@ export default defineConfig({
     'posts/vi/:slug': 'vi/posts/:slug'
   },
   head: [
+    ['script', { id: 'check-dark-mode' }, themeInitScript],
     ['meta', { name: 'twitter:card', content: 'summary' }],
     [
       'meta',

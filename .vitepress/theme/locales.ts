@@ -6,6 +6,8 @@ export type Locale = 'en' | 'vi'
 export const locales = {
   en: {
     lang: 'en-US',
+    // Shown as the flag's tooltip in the language switcher
+    name: 'English',
     // URL prefix of this locale ('' = site root)
     prefix: '',
     // CV page of this locale (index.md / vi/index.md)
@@ -19,7 +21,9 @@ export const locales = {
       backToBlog: '← Back to the blog',
       publishedOn: 'Published on',
       notFound: '404 Page Not Found',
-      switchLocale: 'Tiếng Việt',
+      noTranslation: 'No translation available',
+      lightMode: 'Switch to light mode',
+      darkMode: 'Switch to dark mode',
       // CV page
       greeting: "Hi, I'm",
       downloadCv: 'Download CV (PDF)',
@@ -43,6 +47,7 @@ export const locales = {
   },
   vi: {
     lang: 'vi-VN',
+    name: 'Tiếng Việt',
     prefix: '/vi',
     home: '/vi/',
     messages: {
@@ -54,7 +59,9 @@ export const locales = {
       backToBlog: '← Quay lại danh sách bài viết',
       publishedOn: 'Đăng ngày',
       notFound: '404 Không tìm thấy trang',
-      switchLocale: 'English',
+      noTranslation: 'Bài viết chưa có bản dịch',
+      lightMode: 'Chuyển sang giao diện sáng',
+      darkMode: 'Chuyển sang giao diện tối',
       // CV page
       greeting: 'Xin chào, tôi là',
       downloadCv: 'Tải CV (PDF)',

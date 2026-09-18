@@ -4,16 +4,17 @@ import { Feed } from 'feed'
 import { createContentLoader, type SiteConfig } from 'vitepress'
 import { author } from './theme/author.js'
 
-const baseUrl = `https://blog.vuejs.org`
+const baseUrl = `https://hieubm.netlify.app`
 
 export async function genFeed(config: SiteConfig) {
   const feed = new Feed({
-    title: 'The Vue Point',
-    description: 'The official blog for the Vue.js project',
+    title: 'Bùi Minh Hiếu - Blog',
+    description:
+      'Notes and articles by Bùi Minh Hiếu on what I learn as a Software Engineer.',
     id: baseUrl,
     link: baseUrl,
     language: 'en',
-    image: 'https://vuejs.org/images/logo.png',
+    image: `${baseUrl}/logo.png`,
     favicon: `${baseUrl}/favicon.ico`,
     copyright: 'Copyright (c) 2026-present, HieuBm. All rights reserved.'
   })

@@ -8,8 +8,8 @@ bio: 'Kỹ sư phần mềm với hơn 4 năm kinh nghiệm chuyên sâu trong v
 location: 'Hà Nội, Việt Nam'
 email: 'contact@example.com'
 github: 'https://github.com'
-linkedin: 'https://linkedin.com'
-avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&auto=format&fit=crop&q=80'
+linkedin: 'https://www.linkedin.com/in/bmhieeus/'
+avatar: '/images/IMG_9809.JPG'
 cvLink: '#'
 
 highlights:

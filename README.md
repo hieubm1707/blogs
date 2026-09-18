@@ -3,10 +3,10 @@
 Trang CV cá nhân kèm blog, nơi tôi đăng các bài viết về những gì tự tìm hiểu được. Trang được build tĩnh bằng [VitePress](https://vitepress.dev), soạn bài qua [Decap CMS](https://decapcms.org) và deploy miễn phí trên [Netlify](https://www.netlify.com).
 
 - **Trang chủ (`/`)**: hồ sơ CV, gồm giới thiệu, kinh nghiệm, kỹ năng, dự án, học vấn và chứng chỉ.
-- **Blog (`/blogs`)**: danh sách bài viết, bài mới nhất ở trên.
-- **Bài viết (`/posts/<slug>`)**: trang chi tiết của từng bài.
+- **Blog (`/blogs`, `/vi/blogs`)**: danh sách bài viết tiếng Anh và tiếng Việt, bài mới nhất ở trên.
+- **Bài viết (`/posts/<slug>`, `/vi/posts/<slug>`)**: trang chi tiết của từng bài, có nút chuyển ngôn ngữ.
 - **CMS (`/admin`)**: giao diện soạn và đăng bài, không cần tự dựng server.
-- **RSS (`/feed.rss`)**: tự tạo mỗi lần build.
+- **RSS (`/feed.rss`, `/vi/feed.rss`)**: tự tạo mỗi lần build, mỗi ngôn ngữ một feed.
 
 ## Công nghệ
 
@@ -46,8 +46,11 @@ Sau đó mở `http://localhost:5173/admin/`. Nhớ commit và push các file CM
 ```
 .
 ├── index.md                  # Trang CV: toàn bộ nội dung nằm trong frontmatter
-├── blogs.md                  # Trang danh sách bài viết (pageType: blog)
-├── posts/                    # Bài viết Markdown (.gitkeep giữ thư mục khi chưa có bài)
+├── blogs.md                  # Trang danh sách bài viết tiếng Anh (pageType: blog)
+├── vi/blogs.md               # Trang danh sách bài viết tiếng Việt
+├── posts/
+│   ├── en/<slug>.md          # Bản tiếng Anh, phục vụ tại /posts/<slug>
+│   └── vi/<slug>.md          # Bản tiếng Việt, phục vụ tại /vi/posts/<slug>
 ├── public/
 │   ├── admin/
 │   │   ├── index.html        # Nạp Decap CMS và Netlify Identity widget
@@ -63,6 +66,8 @@ Sau đó mở `http://localhost:5173/admin/`. Nhớ commit và push các file CM
 │       ├── BlogList.vue      # Giao diện danh sách bài
 │       ├── Article.vue       # Giao diện chi tiết bài
 │       ├── author.ts         # Thông tin tác giả cố định: tên, avatar, LinkedIn
+│       ├── locales.ts        # Ngôn ngữ, chữ giao diện EN/VI, map URL bài viết
+│       ├── useLocale.ts      # Composable t() lấy chữ theo ngôn ngữ trang
 │       ├── Author.vue, Date.vue, NotFound.vue
 │       ├── posts.data.ts     # Data loader: đọc posts/*.md và sắp xếp theo ngày
 │       └── style.css
@@ -75,8 +80,10 @@ Sau đó mở `http://localhost:5173/admin/`. Nhớ commit và push các file CM
 
 Có hai cách:
 
-1. **Qua CMS**: vào `/admin`, đăng nhập bằng Netlify Identity, chọn **Posts** rồi **New Posts**. Khi publish, Decap sẽ commit bài vào nhánh `main` và Netlify tự build lại.
-2. **Viết tay**: tạo file `posts/<slug>.md`, rồi commit và push:
+Blog song ngữ: mỗi bài có một bản tiếng Anh và một bản tiếng Việt, cùng slug.
+
+1. **Qua CMS**: vào `/admin`, đăng nhập bằng Netlify Identity, chọn **Posts** rồi **New Posts**. Màn hình soạn có hai ngôn ngữ EN và VI; nhập tiêu đề và nội dung cho cả hai, ngày đăng chỉ nhập một lần. Khi publish, Decap commit cả `posts/en/<slug>.md` và `posts/vi/<slug>.md` vào `main` và Netlify tự build lại.
+2. **Viết tay**: tạo cả `posts/en/<slug>.md` và `posts/vi/<slug>.md`, rồi commit và push:
 
 ```markdown
 ---
@@ -93,7 +100,7 @@ Nội dung chính...
 
 Thông tin tác giả (tên, avatar, LinkedIn) là cố định cho mọi bài và được khai báo trong `.vitepress/theme/author.ts`, nên không cần ghi vào frontmatter của bài.
 
-Tên file chính là slug trong URL (`cleanUrls: true`), ví dụ `posts/hello.md` sẽ thành `/posts/hello`.
+Tên file chính là slug trong URL: `posts/en/hello.md` thành `/posts/hello`, `posts/vi/hello.md` thành `/vi/posts/hello` (nhờ `rewrites` trong `.vitepress/config.ts`). Bài chỉ có một ngôn ngữ vẫn hiện bình thường ở ngôn ngữ đó, chỉ là không có nút chuyển ngôn ngữ.
 
 ## Cập nhật CV
 
@@ -124,7 +131,8 @@ Mỗi lần push lên `main`, dù từ máy hay từ CMS, Netlify sẽ tự buil
 
 ## Ghi chú
 
-- Toàn bộ giao diện trang và nhãn trong CMS dùng tiếng Anh.
+- Giao diện mặc định là tiếng Anh; tiếng Việt nằm dưới `/vi/`. Chữ giao diện của cả hai ngôn ngữ nằm trong `.vitepress/theme/locales.ts`.
+- Trang CV hiện chỉ có tiếng Anh. Muốn thêm CV tiếng Việt: tạo `vi/index.md`, đổi `home` của `vi` trong `locales.ts` thành `'/vi/'`, và chuyển các tiêu đề mục trong `CvProfile.vue` vào `messages`.
 - Domain production là `https://hieubm.netlify.app`. Nếu đổi domain, sửa `baseUrl` trong `.vitepress/genFeed.ts` và thẻ `twitter:image` trong `.vitepress/config.ts`.
 - Ảnh upload từ CMS được lưu vào `public/images/` (cùng thư mục với avatar `avatar.png`).
 - `vercel.json` còn sót lại từ bản fork [vuejs/blog](https://github.com/vuejs/blog); host thật là Netlify.

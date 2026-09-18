@@ -1,9 +1,16 @@
 <script setup lang="ts">
 import Date from './Date.vue'
-import { data as posts } from './posts.data.js'
+import { computed } from 'vue'
+import { data as allPosts } from './posts.data.js'
 import { useData } from 'vitepress'
+import { useLocale } from './useLocale'
 
 const { frontmatter } = useData()
+const { locale, t } = useLocale()
+
+const posts = computed(() =>
+  allPosts.filter((p) => p.locale === locale.value)
+)
 </script>
 
 <template>
@@ -12,7 +19,7 @@ const { frontmatter } = useData()
       <h1
         class="text-3xl leading-9 font-extrabold text-gray-900 dark:text-white tracking-tight sm:text-4xl sm:leading-10 md:text-5xl md:leading-14"
       >
-        {{ frontmatter.title || 'Blog' }}
+        {{ frontmatter.title || t('blog') }}
       </h1>
       <p v-if="frontmatter.subtext" class="text-lg leading-7 text-gray-500 dark:text-gray-400">
         {{ frontmatter.subtext }}
@@ -38,7 +45,7 @@ const { frontmatter } = useData()
               ></div>
             </div>
             <div class="text-base leading-6 font-medium">
-              <a class="link" aria-label="read more" :href="url">Read more →</a>
+              <a class="link" aria-label="read more" :href="url">{{ t('readMore') }}</a>
             </div>
           </div>
         </article>

@@ -10,13 +10,21 @@ local_backend: true
 media_folder: 'public/images'
 public_folder: '/images'
 
+# Every post is written in both languages: posts/en/<slug>.md and posts/vi/<slug>.md.
+# config.ts rewrites them to /posts/<slug> and /vi/posts/<slug>.
+i18n:
+  structure: multiple_folders
+  locales: [en, vi]
+  default_locale: en
+
 collections:
   - name: 'posts'
     label: 'Posts'
     folder: 'posts'
     create: true
     slug: '{{slug}}'
+    i18n: true
     fields:
-      - { label: 'Title', name: 'title', widget: 'string' }
-      - { label: 'Publish date', name: 'date', widget: 'datetime', format: 'YYYY-MM-DD', date_format: 'YYYY-MM-DD', time_format: false }
-      - { label: 'Body', name: 'body', widget: 'markdown' }
+      - { label: 'Title', name: 'title', widget: 'string', i18n: true }
+      - { label: 'Publish date', name: 'date', widget: 'datetime', format: 'YYYY-MM-DD', date_format: 'YYYY-MM-DD', time_format: false, i18n: duplicate }
+      - { label: 'Body', name: 'body', widget: 'markdown', i18n: true }

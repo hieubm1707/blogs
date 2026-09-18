@@ -1,7 +1,7 @@
-// Thông tin tác giả cố định, dùng chung cho mọi bài viết và RSS feed
+// Fixed author info, shared by every blog post and the RSS feed
 export const author = {
   name: 'Hieubm',
   linkedin: 'https://www.linkedin.com/in/bmhieeus/',
-  // File nằm ở public/images/, được phục vụ tại /images/
+  // Stored in public/images/, served at /images/
   avatar: '/images/avatar.png'
 }

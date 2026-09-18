@@ -12,10 +12,10 @@ const { frontmatter } = useData()
       <h1
         class="text-3xl leading-9 font-extrabold text-gray-900 dark:text-white tracking-tight sm:text-4xl sm:leading-10 md:text-5xl md:leading-14"
       >
-        {{ frontmatter.title || 'Blog & Bài viết' }}
+        {{ frontmatter.title || 'Blog' }}
       </h1>
-      <p class="text-lg leading-7 text-gray-500 dark:text-gray-400">
-        {{ frontmatter.subtext || 'Chia sẻ kiến thức, kinh nghiệm và góc nhìn lập trình.' }}
+      <p v-if="frontmatter.subtext" class="text-lg leading-7 text-gray-500 dark:text-gray-400">
+        {{ frontmatter.subtext }}
       </p>
     </div>
     <ul class="divide-y divide-gray-200 dark:divide-slate-200/5">
@@ -38,7 +38,7 @@ const { frontmatter } = useData()
               ></div>
             </div>
             <div class="text-base leading-6 font-medium">
-              <a class="link" aria-label="read more" :href="url">Đọc tiếp →</a>
+              <a class="link" aria-label="read more" :href="url">Read more →</a>
             </div>
           </div>
         </article>

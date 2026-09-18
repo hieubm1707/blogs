@@ -1,22 +1,22 @@
 backend:
   name: git-gateway
-  repo: hieubm1707/blogs # Ví dụ: username/vue-blog
-  branch: main # Đổi thành master hoặc main tùy repo GitHub của bạn
+  repo: hieubm1707/blogs
+  branch: main
 
-# Chế độ làm việc local (khi dev máy tính thì tự động lưu vào file mà không cần qua GitHub API)
+# Local mode: with `pnpm cms:proxy`, the CMS writes files directly instead of going through the GitHub API
 local_backend: true
 
-# Nơi lưu trữ và đường dẫn ảnh upload
+# Where uploaded images are stored and the public path they are served from
 media_folder: 'public/images'
 public_folder: '/images'
 
 collections:
   - name: 'posts'
-    label: 'Bài viết'
+    label: 'Posts'
     folder: 'posts'
     create: true
     slug: '{{slug}}'
     fields:
-      - { label: 'Tiêu đề', name: 'title', widget: 'string' }
-      - { label: 'Ngày đăng', name: 'date', widget: 'datetime', format: 'YYYY-MM-DD', date_format: 'YYYY-MM-DD', time_format: false }
-      - { label: 'Nội dung bài viết', name: 'body', widget: 'markdown' }
+      - { label: 'Title', name: 'title', widget: 'string' }
+      - { label: 'Publish date', name: 'date', widget: 'datetime', format: 'YYYY-MM-DD', date_format: 'YYYY-MM-DD', time_format: false }
+      - { label: 'Body', name: 'body', widget: 'markdown' }

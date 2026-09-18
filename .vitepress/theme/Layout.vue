@@ -29,14 +29,14 @@ const { page, frontmatter } = useData()
             :class="{ 'text-emerald-600 dark:text-emerald-400': frontmatter.pageType === 'cv' || page.relativePath === 'index.md' }"
             href="/"
           >
-            Hồ sơ (CV)
+            About
           </a>
           <a
             class="transition hover:text-emerald-600 dark:hover:text-emerald-400"
             :class="{ 'text-emerald-600 dark:text-emerald-400': frontmatter.pageType === 'blog' || page.relativePath === 'blogs.md' || page.relativePath.startsWith('posts/') }"
             href="/blogs"
           >
-            Bài viết (Blogs)
+            Blog
           </a>
         </nav>
       </header>
@@ -45,11 +45,11 @@ const { page, frontmatter } = useData()
     <!-- Main Content -->
     <main class="max-w-3xl mx-auto px-4 sm:px-6 xl:max-w-5xl xl:px-0 pt-8">
       <NotFound v-if="page.isNotFound" />
-      <!-- Trang chủ: CV -->
+      <!-- Home: CV -->
       <CvProfile v-else-if="frontmatter.pageType === 'cv' || page.relativePath === 'index.md'" />
-      <!-- Trang danh sách blogs -->
+      <!-- Blog post list -->
       <BlogList v-else-if="frontmatter.pageType === 'blog' || page.relativePath === 'blogs.md'" />
-      <!-- Trang chi tiết bài viết blog -->
+      <!-- Single blog post -->
       <Article v-else />
     </main>
   </div>

@@ -1,6 +1,6 @@
 # CLAUDE.md
 
-This is a personal CV and blog site: VitePress with a custom theme, content managed by Decap CMS, deployed free on Netlify. The UI text and most content are in **Vietnamese**, so keep new UI strings in Vietnamese. The user talks in Vietnamese; reply in Vietnamese.
+This is a personal CV and blog site: VitePress with a custom theme, content managed by Decap CMS, deployed free on Netlify. The whole site (UI, CV content, CMS labels) is in **English**; keep new UI strings and CV text in English. The docs (`README.md`) are in Vietnamese. The user talks in Vietnamese; reply in Vietnamese.
 
 ## Commands
 
@@ -24,13 +24,13 @@ There are no tests and no linter. To verify a change, run `pnpm build`: it fails
   - anything else (the `posts/*.md` files) → `Article.vue`
   
   `index.md` and `blogs.md` set `layout: false`.
-- **The CV is data-driven.** All CV content lives in the YAML frontmatter of `index.md`, and `CvProfile.vue` renders it through `useData().frontmatter`. Keys: `name, headline, bio, status, location, avatar, email, github, linkedin, cvLink, highlights[], experiences[], skillGroups[], projects[], education[], certifications[]`. To change CV content, edit the YAML, not the Vue file. If you add a key, update both files.
+- **The CV is data-driven.** All CV content lives in the YAML frontmatter of `index.md`, and `CvProfile.vue` renders it through `useData().frontmatter`. Keys: `name, headline, bio, status, location, avatar, email, github, linkedin, cvLink, highlights[], experiences[], skillGroups[], projects[], education[], certifications[]`. To change CV content, edit the YAML, not the Vue file. `CvProfile.vue` has no placeholder fallbacks; each section hides itself when its key is missing. Only put facts the user has provided into the CV; never invent roles, numbers or certifications. If you add a key, update both files.
 - **Posts** live in `posts/*.md`. Decap CMS on production commits posts straight to `main` through the GitHub API, which triggers a Netlify deploy, so the local copy can fall behind. Run `git pull` before editing posts. `posts/.gitkeep` keeps the folder in the repo, and the build must keep working when `posts/` is empty. `theme/posts.data.ts` (a `createContentLoader` with `excerpt: true`) loads them and sorts them newest first; `BlogList.vue` and `Article.vue` use that data. The excerpt is everything above the first `---` separator in the post body.
 - **Post frontmatter**: only `title` and `date` (YYYY-MM-DD). This must stay in sync with the `posts` collection fields in `public/admin/config.yml`.
 - **The author is fixed.** Name (`Hieubm`), avatar (`/images/avatar.png`, stored in `public/images/`) and LinkedIn URL are defined once in `.vitepress/theme/author.ts` and used by `Author.vue` and `genFeed.ts`. Any `author`, `gravatar`, `twitter` or `linkedin` keys in post frontmatter are ignored. Don't use Gravatar, and don't show Twitter/X links. The CV in `index.md` uses the same avatar and LinkedIn; keep them in sync.
 - **RSS**: `.vitepress/genFeed.ts` runs as the `buildEnd` hook and writes `feed.rss` into the output directory.
 - **Styling**: Tailwind 3 through `postcss.config.js`. Its `content` glob only scans `./.vitepress/theme/**/*.vue`, so classes used anywhere else get purged. Dark mode uses `dark:` classes. The accent color is emerald.
-- **`srcExclude`** in `config.ts` keeps `README.md` and `CLAUDE.md` out of the build. Without it they become pages, fall through to `Article.vue`, and crash the build (the post lookup returns `undefined`). Any new root-level `.md` file that is not a page must be added there.
+- **`srcExclude`** in `config.ts` keeps `README.md`, `CLAUDE.md` and `cv.md` (the raw source text of the CV) out of the build. Without it they become pages, fall through to `Article.vue`, and crash the build (the post lookup returns `undefined`). Any new root-level `.md` file that is not a page must be added there.
 - **`cleanUrls: true`** means `posts/foo.md` is served at `/posts/foo`.
 
 ## CMS and deploy
@@ -38,15 +38,12 @@ There are no tests and no linter. To verify a change, run `pnpm build`: it fails
 - `public/admin/index.html` loads Decap CMS 3 from unpkg and the Netlify Identity widget. `public/admin/config.yml` sets `backend: git-gateway`, repo `hieubm1707/blogs`, branch `main`, and `local_backend: true`.
 - Media uploads go to `public/images`, served at `/images`.
 - `netlify.toml` builds with `pnpm build` and publishes `.vitepress/dist`. Netlify Identity and Git Gateway must be enabled on the site. Every push to `main`, including CMS commits, triggers a deploy.
-- `vercel.json` is a leftover from the fork; Netlify is the actual host.
 
-## Known leftovers from the vuejs/blog fork
+## Site identity
 
-- `.vitepress/config.ts` still has "The Vue Point" as title and description, `@vuejs` Twitter meta, and Vue's Fathom analytics script.
-- `genFeed.ts` still has `baseUrl = https://blog.vuejs.org` and Vue's feed title and copyright.
-- `index.md` holds placeholder CV data.
-
-Don't "fix" these unless asked. When the user asks for rebranding, these are the places to change.
+- Domain: `https://hieubm.netlify.app` (used as `baseUrl` in `genFeed.ts` and in the `twitter:image` meta in `config.ts`). Update both if the domain changes.
+- Title `Bùi Minh Hiếu - Software Engineer`, `lang: 'en-US'`. There is no analytics script; the Vue Fathom script from the fork was removed on purpose.
+- `vercel.json` is a leftover from the vuejs/blog fork; Netlify is the actual host.
 
 ## Conventions
 

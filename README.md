@@ -75,7 +75,7 @@ Sau đó mở `http://localhost:5173/admin/`. Nhớ commit và push các file CM
 
 Có hai cách:
 
-1. **Qua CMS**: vào `/admin`, đăng nhập bằng Netlify Identity, chọn **Bài viết** rồi **New**. Khi publish, Decap sẽ commit bài vào nhánh `main` và Netlify tự build lại.
+1. **Qua CMS**: vào `/admin`, đăng nhập bằng Netlify Identity, chọn **Posts** rồi **New Posts**. Khi publish, Decap sẽ commit bài vào nhánh `main` và Netlify tự build lại.
 2. **Viết tay**: tạo file `posts/<slug>.md`, rồi commit và push:
 
 ```markdown
@@ -106,7 +106,7 @@ Toàn bộ nội dung CV nằm trong **frontmatter** của `index.md`. Phần HT
 | `highlights[]` | Các ô số liệu (`value`, `label`) |
 | `experiences[]` | `role`, `company`, `location`, `period`, `description`, ... |
 | `skillGroups[]` | `category`, `icon`, `items[]` |
-| `projects[]` | `name`, `description`, `github`, `link`, `highlights[]`, `techs[]` |
+| `projects[]` | `name`, `period`, `description`, `github`, `link`, `highlights[]`, `techs[]` |
 | `education[]` | `degree`, `school`, `period`, `description` |
 | `certifications[]` | `title`, `issuer`, `year` |
 
@@ -122,11 +122,9 @@ Toàn bộ nội dung CV nằm trong **frontmatter** của `index.md`. Phần HT
 
 Mỗi lần push lên `main`, dù từ máy hay từ CMS, Netlify sẽ tự build và deploy.
 
-## Việc còn tồn đọng
+## Ghi chú
 
-Dự án được fork từ blog chính thức của Vue ([vuejs/blog](https://github.com/vuejs/blog)), nên vẫn còn vài chỗ chưa đổi:
-
-- [ ] `.vitepress/config.ts`: `title`, `description` và các thẻ meta `twitter:*` (dùng cho ảnh preview khi chia sẻ link) vẫn là của *The Vue Point*. Script Fathom analytics vẫn dùng `data-site` của Vue.
-- [ ] `.vitepress/genFeed.ts`: `baseUrl` vẫn là `https://blog.vuejs.org`, cần đổi sang domain Netlify của mình. `title` và `copyright` cũng cần đổi.
-- [ ] `index.md`: dữ liệu CV hiện là dữ liệu mẫu.
+- Toàn bộ giao diện trang và nhãn trong CMS dùng tiếng Anh.
+- Domain production là `https://hieubm.netlify.app`. Nếu đổi domain, sửa `baseUrl` trong `.vitepress/genFeed.ts` và thẻ `twitter:image` trong `.vitepress/config.ts`.
 - Ảnh upload từ CMS được lưu vào `public/images/` (cùng thư mục với avatar `avatar.png`).
+- `vercel.json` còn sót lại từ bản fork [vuejs/blog](https://github.com/vuejs/blog); host thật là Netlify.

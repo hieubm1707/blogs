@@ -53,7 +53,7 @@ Sau đó mở `http://localhost:5173/admin/`. Nhớ commit và push các file CM
 │   │   ├── index.html        # Nạp Decap CMS và Netlify Identity widget
 │   │   └── config.yml        # Cấu hình CMS: backend, collections, media
 │   ├── favicon.ico
-│   └── logo.svg
+│   └── logo.png              # Logo BM ở header (tự đảo màu khi dark mode)
 ├── .vitepress/
 │   ├── config.ts             # Title, meta, head scripts, hook buildEnd
 │   ├── genFeed.ts            # Tạo feed.rss
@@ -62,6 +62,7 @@ Sau đó mở `http://localhost:5173/admin/`. Nhớ commit và push các file CM
 │       ├── CvProfile.vue     # Giao diện trang CV
 │       ├── BlogList.vue      # Giao diện danh sách bài
 │       ├── Article.vue       # Giao diện chi tiết bài
+│       ├── author.ts         # Thông tin tác giả cố định: tên, avatar, LinkedIn
 │       ├── Author.vue, Date.vue, NotFound.vue
 │       ├── posts.data.ts     # Data loader: đọc posts/*.md và sắp xếp theo ngày
 │       └── style.css
@@ -81,9 +82,6 @@ Có hai cách:
 ---
 title: Tiêu đề bài viết
 date: 2026-09-17
-author: Tên tác giả
-gravatar: <md5 của email>   # không bắt buộc
-twitter: '@handle'          # không bắt buộc
 ---
 
 Đoạn mở đầu. Phần trước dấu `---` bên dưới sẽ làm excerpt ở trang danh sách và trong RSS.
@@ -92,6 +90,8 @@ twitter: '@handle'          # không bắt buộc
 
 Nội dung chính...
 ```
+
+Thông tin tác giả (tên, avatar, LinkedIn) là cố định cho mọi bài và được khai báo trong `.vitepress/theme/author.ts`, nên không cần ghi vào frontmatter của bài.
 
 Tên file chính là slug trong URL (`cleanUrls: true`), ví dụ `posts/hello.md` sẽ thành `/posts/hello`.
 
@@ -126,7 +126,7 @@ Mỗi lần push lên `main`, dù từ máy hay từ CMS, Netlify sẽ tự buil
 
 Dự án được fork từ blog chính thức của Vue ([vuejs/blog](https://github.com/vuejs/blog)), nên vẫn còn vài chỗ chưa đổi:
 
-- [ ] `.vitepress/config.ts`: `title`, `description` và meta Twitter vẫn là của *The Vue Point*. Script Fathom analytics vẫn dùng `data-site` của Vue.
+- [ ] `.vitepress/config.ts`: `title`, `description` và các thẻ meta `twitter:*` (dùng cho ảnh preview khi chia sẻ link) vẫn là của *The Vue Point*. Script Fathom analytics vẫn dùng `data-site` của Vue.
 - [ ] `.vitepress/genFeed.ts`: `baseUrl` vẫn là `https://blog.vuejs.org`, cần đổi sang domain Netlify của mình. `title` và `copyright` cũng cần đổi.
 - [ ] `index.md`: dữ liệu CV hiện là dữ liệu mẫu.
-- Ảnh upload từ CMS sẽ lưu vào `public/images/`. Thư mục này sẽ tự được tạo ở lần upload đầu tiên.
+- Ảnh upload từ CMS được lưu vào `public/images/` (cùng thư mục với avatar `avatar.png`).

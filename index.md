@@ -9,7 +9,7 @@ location: 'Hà Nội, Việt Nam'
 email: 'contact@example.com'
 github: 'https://github.com'
 linkedin: 'https://www.linkedin.com/in/bmhieeus/'
-avatar: '/images/IMG_9809.JPG'
+avatar: '/images/avatar.png'
 cvLink: '#'
 
 highlights:

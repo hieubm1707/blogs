@@ -2,6 +2,7 @@ import path from 'path'
 import { writeFileSync } from 'fs'
 import { Feed } from 'feed'
 import { createContentLoader, type SiteConfig } from 'vitepress'
+import { author } from './theme/author.js'
 
 const baseUrl = `https://blog.vuejs.org`
 
@@ -14,8 +15,7 @@ export async function genFeed(config: SiteConfig) {
     language: 'en',
     image: 'https://vuejs.org/images/logo.png',
     favicon: `${baseUrl}/favicon.ico`,
-    copyright:
-      'Copyright (c) 2021-present, Yuxi (Evan) You and blog contributors'
+    copyright: 'Copyright (c) 2026-present, HieuBm. All rights reserved.'
   })
 
   const posts = await createContentLoader('posts/*.md', {
@@ -36,14 +36,7 @@ export async function genFeed(config: SiteConfig) {
       link: `${baseUrl}${url}`,
       description: excerpt,
       content: html?.replaceAll('&ZeroWidthSpace;', ''),
-      author: [
-        {
-          name: frontmatter.author,
-          link: frontmatter.twitter
-            ? `https://twitter.com/${frontmatter.twitter}`
-            : undefined
-        }
-      ],
+      author: [{ name: author.name, link: author.linkedin }],
       date: frontmatter.date
     })
   }

@@ -15,10 +15,9 @@ const { page, frontmatter } = useData()
         <!-- Logo / Home Link -->
         <a class="flex items-center gap-2.5 text-xl font-bold tracking-tight text-gray-900 dark:text-white" href="/" aria-label="Home">
           <img
-            class="inline-block"
-            style="width: 32px; height: 28px"
+            class="inline-block w-8 h-8 dark:invert"
             alt="logo"
-            src="/logo.svg"
+            src="/logo.png"
           />
           <span class="hover:text-emerald-600 dark:hover:text-emerald-400 transition">Portfolio & Blog</span>
         </a>

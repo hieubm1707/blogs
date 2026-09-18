@@ -19,7 +19,4 @@ collections:
     fields:
       - { label: 'Tiêu đề', name: 'title', widget: 'string' }
       - { label: 'Ngày đăng', name: 'date', widget: 'datetime', format: 'YYYY-MM-DD', date_format: 'YYYY-MM-DD', time_format: false }
-      - { label: 'Tác giả', name: 'author', widget: 'string', default: 'Admin' }
-      - { label: 'Gravatar (MD5 Email)', name: 'gravatar', widget: 'string', required: false }
-      - { label: 'Twitter Handle', name: 'twitter', widget: 'string', required: false }
       - { label: 'Nội dung bài viết', name: 'body', widget: 'markdown' }

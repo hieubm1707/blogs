@@ -1,7 +1,5 @@
 <script setup lang="ts">
-import { useData } from 'vitepress'
-
-const { frontmatter } = useData()
+import { author } from './author'
 </script>
 
 <template>
@@ -13,28 +11,21 @@ const { frontmatter } = useData()
       >
         <li class="flex items-center space-x-2">
           <img
-            v-if="frontmatter.gravatar"
-            :src="'https://gravatar.com/avatar/' + frontmatter.gravatar"
-            alt="author image"
-            class="w-10 h-10 rounded-full"
-          />
-          <img
-            v-else-if="frontmatter.avatar"
-            :src="frontmatter.avatar"
-            alt="author image"
-            class="w-10 h-10 rounded-full"
+            :src="author.avatar"
+            :alt="author.name"
+            class="w-10 h-10 rounded-full object-cover"
           />
           <dl class="text-sm font-medium leading-5 whitespace-nowrap">
             <dt class="sr-only">Name</dt>
-            <dd class="text-gray-900 dark:text-white">{{ frontmatter.author }}</dd>
-            <dt v-if="frontmatter.twitter" class="sr-only">Twitter</dt>
-            <dd v-if="frontmatter.twitter">
+            <dd class="text-gray-900 dark:text-white">{{ author.name }}</dd>
+            <dt class="sr-only">LinkedIn</dt>
+            <dd>
               <a
-                :href="'https://twitter.com/' + frontmatter.twitter"
+                :href="author.linkedin"
                 target="_blank"
-                rel="noopnener noreferrer"
+                rel="noopener noreferrer"
                 class="link"
-                >{{ frontmatter.twitter }}</a
+                >LinkedIn</a
               >
             </dd>
           </dl>

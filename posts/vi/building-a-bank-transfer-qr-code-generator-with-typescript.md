@@ -13,7 +13,7 @@ Những việc đạt được:
 * **Nối vào nghiệp vụ hoá đơn**: từ một hoá đơn dịch vụ, hệ thống tự dựng mã QR đúng số tiền và
   đúng nội dung chuyển khoản để cư dân quét thanh toán; thiếu ngân hàng hoặc số tài khoản thì
   trả lỗi thiếu tham số thay vì sinh ra mã sai.
-
+---
 Toàn bộ khung payload sau khi port:
 
 ```ts

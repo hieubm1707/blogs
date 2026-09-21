@@ -13,7 +13,7 @@ What was achieved:
 * **Wired into billing**: from a service bill, the system builds a QR code with the exact amount
   and transfer note for the resident to scan and pay. If the bank or account number is missing,
   it returns a missing-parameter error instead of generating a wrong code.
-
+---
 The full payload builder after the port:
 
 ```ts

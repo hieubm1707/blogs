@@ -1,16 +1,16 @@
 ---
-title: "[DART] Xây dựng bộ sinh mã QR chuyển khoản ngân hàng"
+title: Xây dựng bộ sinh mã QR chuyển khoản ngân hàng sử dụng Dart
 date: 2024-03-14
 ---
 Tự viết trọn bộ thư viện sinh và đọc mã QR chuyển khoản theo chuẩn EMVCo / VietQR.
 **Không dùng thư viện QR hay CRC của bên thứ ba, không gọi API ngoài** — toàn bộ thuật toán
 dựng chuỗi và tính checksum đều tự code.
 
-Những năng lực đạt được:
+Những việc đạt được:
 
 - **Sinh payload VietQR** từ mã BIN ngân hàng + số tài khoản, kèm số tiền và nội dung chuyển
   khoản tuỳ chọn.
-- **Phân biệt QR một lần và QR tái sử dụng**: có số tiền → mã dùng một lần, không có số tiền →
+- **Phân biệt QR một lần và QR tái sử dụng**: có số tiền → mã dùng một lần; không có số tiền →
   mã dùng lại nhiều lần.
 - **Đọc ngược (parse) một mã QR có sẵn** để lấy ra ngân hàng, số tài khoản, số tiền, nội dung —
   kèm kiểm tra CRC để bắt mã hỏng hoặc bị sửa.
@@ -20,7 +20,7 @@ Những năng lực đạt được:
 
 ---
 
-## Luồng chạy: từ tham số đến chuỗi QR
+## Luồng xử lý: từ tham số đến chuỗi QR
 
 ```dart
 final qr = QRPay.initVietQR(
@@ -32,9 +32,7 @@ final qr = QRPay.initVietQR(
 final payload = qr.build();
 ```
 
-Hai bước này làm hai việc **hoàn toàn tách biệt**.
-
-### Bước 1 — `initVietQR()`: chỉ cấu hình, chưa sinh ra gì
+### Bước 1 — `initVietQR()`: Cấu hình thông tin
 
 `initVietQR` **không tạo ra chuỗi QR nào cả**. Nó là một factory: tạo một object `QRPay` rỗng
 rồi điền sẵn các hằng số đặc thù của VietQR vào, để `build()` sau này biết phải dựng theo
@@ -74,11 +72,9 @@ Bốn quyết định được chốt ở đây:
 
 Sau bước này trong bộ nhớ mới chỉ có một object; chưa có ký tự nào của mã QR.
 
-### Bước 2 — `build()`: tự tay ghép chuỗi, không qua thư viện
+### Bước 2 — `build()`: tự ghép chuỗi, không qua thư viện
 
-`build()` trả về **một chuỗi text**, không phải hình ảnh. Việc vẽ chuỗi đó thành ô vuông đen
-trắng là của thư viện vẽ QR ở phía client (ví dụ `qr_flutter`) — bản thân package này không
-đụng gì tới đồ hoạ.
+`build()` trả về **một chuỗi text**, không phải hình ảnh. Việc vẽ mã QR ở phía client (ví dụ `qr_flutter`) — bản thân package này không đụng gì tới đồ hoạ.
 
 Bên trong, `build()` làm đúng 3 việc:
 
@@ -88,7 +84,7 @@ Bên trong, `build()` làm đúng 3 việc:
 
 ---
 
-## `genFieldData` được dùng khi nào
+## `genFieldData`: format dữ liệu Input
 
 Đây là viên gạch duy nhất của cả hệ thống — **mọi trường, ở mọi tầng lồng nhau, đều đi qua nó**.
 
@@ -229,9 +225,6 @@ Tách ra cho dễ đọc:
 6304 63EA                        CRC-16/CCITT
 ```
 
-Chuỗi này đưa vào thư viện vẽ QR là ra mã quét được bằng mọi app ngân hàng Việt Nam.
-
-Thuật toán chạy ổn định từ khi viết xong, không phát sinh sửa lỗi; lần đụng tới duy nhất sau đó
-(2024-07-03) chỉ là chuẩn hoá format theo monorepo, logic giữ nguyên.
+Chuỗi này đưa vào thư viện vẽ QR là ra mã QR quét được bằng mọi app ngân hàng Việt Nam.
 
 `#backend` `#dart` `#flutter` `#vietqr` `#napas247` `#emvco` `#tlv` `#crc16` `#payment` `#fintech`

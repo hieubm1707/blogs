@@ -1,12 +1,12 @@
 ---
-title: "[DART] Building a bank transfer QR code generator"
+title: Building a bank transfer QR code generator with Dart
 date: 2024-03-14
 ---
 Wrote a complete library, from scratch, that generates and reads bank transfer QR codes following
 the EMVCo / VietQR standard. **It uses no third-party QR or CRC library and calls no external API.**
 The string-building and checksum algorithms are all hand-written.
 
-Capabilities delivered:
+What was achieved:
 
 - **Generate a VietQR payload** from a bank BIN and an account number, with an optional amount and
   transfer note.
@@ -20,7 +20,7 @@ Capabilities delivered:
 
 ---
 
-## The flow: from parameters to QR string
+## Processing flow: from parameters to QR string
 
 ```dart
 final qr = QRPay.initVietQR(
@@ -32,9 +32,7 @@ final qr = QRPay.initVietQR(
 final payload = qr.build();
 ```
 
-These two steps do **two completely separate jobs**.
-
-### Step 1: `initVietQR()` configures the object and produces no output yet
+### Step 1 — `initVietQR()`: Configuring the information
 
 `initVietQR` **does not generate any QR string**. It is a factory. It creates an empty `QRPay`
 object and fills in the VietQR-specific constants, so that `build()` later knows which rules
@@ -74,11 +72,9 @@ Four decisions are made here:
 
 After this step there is only an object in memory. Not a single character of the QR code exists yet.
 
-### Step 2: `build()` assembles the string by hand, with no library
+### Step 2 — `build()`: assembling the string itself, without a library
 
-`build()` returns **a text string, not an image**. Turning that string into the black-and-white
-square is the job of a QR rendering library on the client (for example `qr_flutter`). This package
-does no graphics work at all.
+`build()` returns **a text string**, not an image. Drawing the QR code happens on the client (for example `qr_flutter`); this package itself does no graphics work at all.
 
 Internally, `build()` does exactly three things:
 
@@ -88,7 +84,7 @@ Internally, `build()` does exactly three things:
 
 ---
 
-## When `genFieldData` is used
+## `genFieldData`: formatting input data
 
 `genFieldData` is the only building block in the system. **Every field, at every nesting level,
 goes through it.**
@@ -236,8 +232,5 @@ Split up for readability:
 
 Feed this string into any QR rendering library and the resulting code can be scanned by every
 Vietnamese banking app.
-
-The algorithm has been stable since it was written and has needed no bug fixes. The only later
-change (2024-07-03) reformatted the code to the monorepo's standard and left the logic untouched.
 
 `#backend` `#dart` `#flutter` `#vietqr` `#napas247` `#emvco` `#tlv` `#crc16` `#payment` `#fintech`

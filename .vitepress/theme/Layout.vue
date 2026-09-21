@@ -7,6 +7,7 @@ import Article from './Article.vue'
 import NotFound from './NotFound.vue'
 import LocaleSwitcher from './LocaleSwitcher.vue'
 import ThemeToggle from './ThemeToggle.vue'
+import Mascot from './Mascot.vue'
 import { data as posts } from './posts.data.js'
 import { locales } from './locales'
 import { useLocale } from './useLocale'
@@ -40,16 +41,19 @@ const switchLink = computed(() => {
 <template>
   <div class="antialiased min-h-screen bg-white dark:bg-slate-900 text-gray-800 dark:text-gray-100">
     <div class="max-w-3xl mx-auto px-4 sm:px-6 xl:max-w-5xl xl:px-0">
-      <header class="flex justify-between items-center py-8 border-b border-gray-100 dark:border-slate-800">
-        <!-- Logo / Home Link -->
-        <a class="flex items-center gap-2.5 text-xl font-bold tracking-tight text-gray-900 dark:text-white" :href="config.home" aria-label="Home">
-          <img
-            class="inline-block w-8 h-8 dark:invert"
-            alt="logo"
-            src="/logo.png"
+      <header class="flex justify-between items-center py-5 border-b border-gray-100 dark:border-slate-800">
+        <!-- Mascot + Home Link. The mascot is a button, so it sits beside the link, not inside it -->
+        <div class="flex items-center gap-2.5">
+          <Mascot
+            directions="/mascots/tiger-directions.webp"
+            reactions="/mascots/tiger-reactions.webp"
+            :size="56"
+            :label="t('boopMascot')"
           />
-          <span class="hover:text-emerald-600 dark:hover:text-emerald-400 transition">Portfolio & Blog</span>
-        </a>
+          <a class="text-xl font-bold tracking-tight text-gray-900 dark:text-white hover:text-emerald-600 dark:hover:text-emerald-400 transition" :href="config.home">
+            Portfolio & Blog
+          </a>
+        </div>
 
         <!-- Navigation Menu -->
         <nav class="flex items-center gap-6 text-sm font-semibold">

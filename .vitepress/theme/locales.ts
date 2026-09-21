@@ -24,6 +24,7 @@ export const locales = {
       noTranslation: 'No translation available',
       lightMode: 'Switch to light mode',
       darkMode: 'Switch to dark mode',
+      boopMascot: 'Boop the tiger',
       // CV page
       greeting: "Hi, I'm",
       downloadCv: 'Download CV (PDF)',
@@ -62,6 +63,7 @@ export const locales = {
       noTranslation: 'Bài viết chưa có bản dịch',
       lightMode: 'Chuyển sang giao diện sáng',
       darkMode: 'Chuyển sang giao diện tối',
+      boopMascot: 'Chọc chú hổ',
       // CV page
       greeting: 'Xin chào, tôi là',
       downloadCv: 'Tải CV (PDF)',

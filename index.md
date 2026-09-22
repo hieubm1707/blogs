@@ -89,6 +89,10 @@ skillGroups:
     icon: '🧰'
     items: [Docker, Git, OpenObserve, Figma]
 
+  - category: 'AI-assisted Development'
+    icon: '🤖'
+    items: ['Claude Code, Max 20x (06/2026 - Present)', 'Cursor Pro (05/2025 - 05/2026)', 'Antigravity Pro (alongside Cursor)', 'GitHub Copilot Pro (08/2022 - 04/2025)', 'ChatGPT, Claude (alongside Copilot)']
+
   - category: 'Soft Skills'
     icon: '🤝'
     items: [Leadership, Teamwork, Research, Communication, Technical English reading]
@@ -100,11 +104,13 @@ projects:
     highlights:
       - 'Fixing UI bugs in the forked codebase.'
       - 'Migrating the transport layer from MTProto to REST APIs so the app works with our own backend.'
+    aiTools: 'Claude Code'
     techs: [Java, Android, REST API]
 
   - name: 'Booking Center'
     period: '07/2025 - 09/2025'
     description: 'A centralized booking system that records and stores customer appointment information across Ngoc Dung channels.'
+    aiTools: 'Cursor'
     techs: [TypeScript, Node.js, PostgreSQL, Redis, REST API]
 
   - name: 'Ngoc Dung Beauty - Backend Platform'
@@ -116,6 +122,7 @@ projects:
       - 'Indexed and partitioned a 20M+ row table: ~100 ms single-record lookups and ~500 ms one-year range queries at the API level.'
       - 'Ran loyalty workflows with cron jobs, cached data with Redis and optimized the FCM push flow.'
       - 'Monitored servers with OpenObserve.'
+    aiTools: 'Claude Code (service migration)'
     techs: [TypeScript, Node.js, PostgreSQL, Redis, Microservices, FCM, OpenObserve]
 
   - name: 'Ngoc Dung Beauty App'
@@ -124,6 +131,7 @@ projects:
     highlights:
       - 'Owned the appointment booking feature and helped maintain other features (09/2023 - 02/2024).'
       - 'Added chat and call features (05/2025 - 06/2025): maintained Chatwoot and wrote new integration APIs for chat; built a LiveKit-based call center service for rooms, tokens and call history, plus a JavaScript calling SDK that can be embedded in multiple products.'
+    aiTools: 'GitHub Copilot'
     techs: [Flutter, Dart, JavaScript, Chatwoot, LiveKit]
 
   - name: 'Green Villas'
@@ -139,6 +147,7 @@ projects:
     description: 'A Flutter web admin portal for managing content of the Ngoc Dung Beauty app and Zalo Mini App, and for tracking app metrics and reports.'
     highlights:
       - 'Built the portal from scratch, then maintained it.'
+    aiTools: 'GitHub Copilot'
     techs: [Flutter Web, Dart]
 
   - name: 'Ngoc Dung Zalo Mini App'
@@ -162,6 +171,7 @@ projects:
       - 'Set up the project codebase from scratch.'
       - 'Designed the database and feature workflows together with the backend team.'
       - 'Integrated MoMo and VNPay payments, push notifications (FCM) and crash reporting (Crashlytics).'
+    aiTools: 'GitHub Copilot'
     techs: [Flutter, Dart, Cubit, Firebase]
 
   - name: 'Totoday - E-commerce App'
@@ -170,6 +180,7 @@ projects:
       - 'Built product listing, search, checkout and account management features.'
       - 'Integrated MoMo and VNPay e-wallet payments.'
       - 'Published the app to the Google Play Store.'
+    aiTools: 'GitHub Copilot'
     techs: [Flutter, Dart, Cubit]
 
   - name: 'DMS - Distribution Management System'
@@ -177,6 +188,7 @@ projects:
     highlights:
       - 'Maintained legacy code, implemented new features and handled deployments.'
       - 'Guided teammates through the project structure and bug fixing.'
+    aiTools: 'GitHub Copilot'
     techs: [Flutter, Dart]
 
   - name: 'Lamviettot'

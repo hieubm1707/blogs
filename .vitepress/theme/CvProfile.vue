@@ -230,6 +230,12 @@ const { config, t } = useLocale()
             <ul v-if="project.highlights" class="space-y-1 text-xs text-gray-500 dark:text-gray-400 list-disc pl-4">
               <li v-for="(h, hi) in project.highlights" :key="hi">{{ h }}</li>
             </ul>
+
+            <!-- AI tools used on the project -->
+            <p v-if="project.aiTools" class="text-xs text-gray-500 dark:text-gray-400">
+              🤖 {{ t('aiAssisted') }}:
+              <span class="font-medium text-emerald-600 dark:text-emerald-400">{{ project.aiTools }}</span>
+            </p>
           </div>
 
           <div v-if="project.techs" class="flex flex-wrap gap-1.5 pt-4 mt-4 border-t border-gray-100 dark:border-slate-800">

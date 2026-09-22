@@ -89,6 +89,10 @@ skillGroups:
     icon: '🧰'
     items: [Docker, Git, OpenObserve, Figma]
 
+  - category: 'Lập trình với AI'
+    icon: '🤖'
+    items: ['Claude Code, Max 20x (06/2026 - Hiện tại)', 'Cursor Pro (05/2025 - 05/2026)', 'Antigravity Pro (song song với Cursor)', 'GitHub Copilot Pro (08/2022 - 04/2025)', 'ChatGPT, Claude (song song với Copilot)']
+
   - category: 'Kỹ năng mềm'
     icon: '🤝'
     items: [Lãnh đạo, Làm việc nhóm, Nghiên cứu, Giao tiếp, Đọc tài liệu kỹ thuật tiếng Anh]
@@ -100,11 +104,13 @@ projects:
     highlights:
       - 'Sửa lỗi giao diện trên codebase đã fork.'
       - 'Chuyển tầng giao tiếp từ MTProto sang REST API để ứng dụng chạy với backend của công ty.'
+    aiTools: 'Claude Code'
     techs: [Java, Android, REST API]
 
   - name: 'Booking Center'
     period: '07/2025 - 09/2025'
     description: 'Hệ thống đặt lịch tập trung, ghi nhận và lưu trữ thông tin lịch hẹn của khách hàng từ các kênh của Ngọc Dung.'
+    aiTools: 'Cursor'
     techs: [TypeScript, Node.js, PostgreSQL, Redis, REST API]
 
   - name: 'Ngoc Dung Beauty - Backend Platform'
@@ -116,6 +122,7 @@ projects:
       - 'Đánh index và partition cho bảng hơn 20 triệu dòng: ~100 ms khi truy vấn một bản ghi và ~500 ms khi truy vấn dữ liệu một năm (đo ở tầng API).'
       - 'Chạy nghiệp vụ loyalty bằng cron job, cache dữ liệu bằng Redis và tối ưu luồng push FCM.'
       - 'Giám sát server bằng OpenObserve.'
+    aiTools: 'Claude Code (migrate service)'
     techs: [TypeScript, Node.js, PostgreSQL, Redis, Microservices, FCM, OpenObserve]
 
   - name: 'Ngoc Dung Beauty App'
@@ -124,6 +131,7 @@ projects:
     highlights:
       - 'Phụ trách chính tính năng đặt lịch và hỗ trợ bảo trì các tính năng khác (09/2023 - 02/2024).'
       - 'Bổ sung tính năng chat và gọi điện (05/2025 - 06/2025): bảo trì Chatwoot và viết API tích hợp mới cho chat; xây dựng hệ thống call center trên LiveKit để quản lý room, token và lịch sử cuộc gọi, kèm JavaScript calling SDK nhúng được vào nhiều sản phẩm.'
+    aiTools: 'GitHub Copilot'
     techs: [Flutter, Dart, JavaScript, Chatwoot, LiveKit]
 
   - name: 'Green Villas'
@@ -139,6 +147,7 @@ projects:
     description: 'Trang quản trị viết bằng Flutter web để quản lý nội dung cho ứng dụng Ngọc Dung Beauty và Zalo Mini App, đồng thời theo dõi số liệu và báo cáo.'
     highlights:
       - 'Xây dựng từ đầu, sau đó tiếp tục bảo trì.'
+    aiTools: 'GitHub Copilot'
     techs: [Flutter Web, Dart]
 
   - name: 'Ngoc Dung Zalo Mini App'
@@ -162,6 +171,7 @@ projects:
       - 'Dựng codebase dự án từ đầu.'
       - 'Cùng team backend thiết kế database và luồng nghiệp vụ.'
       - 'Tích hợp thanh toán MoMo và VNPay, thông báo đẩy (FCM) và báo cáo crash (Crashlytics).'
+    aiTools: 'GitHub Copilot'
     techs: [Flutter, Dart, Cubit, Firebase]
 
   - name: 'Totoday - E-commerce App'
@@ -170,6 +180,7 @@ projects:
       - 'Xây dựng các tính năng danh sách sản phẩm, tìm kiếm, thanh toán và quản lý tài khoản.'
       - 'Tích hợp thanh toán ví điện tử MoMo và VNPay.'
       - 'Phát hành ứng dụng lên Google Play Store.'
+    aiTools: 'GitHub Copilot'
     techs: [Flutter, Dart, Cubit]
 
   - name: 'DMS - Distribution Management System'
@@ -177,6 +188,7 @@ projects:
     highlights:
       - 'Bảo trì code cũ, phát triển tính năng mới và triển khai.'
       - 'Hướng dẫn đồng nghiệp về cấu trúc dự án và sửa lỗi.'
+    aiTools: 'GitHub Copilot'
     techs: [Flutter, Dart]
 
   - name: 'Lamviettot'

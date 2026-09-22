@@ -40,6 +40,7 @@ export const locales = {
       sourceCode: 'Source code',
       liveDemo: 'Live Demo',
       liveDemoTitle: 'Demo / Live site',
+      aiAssisted: 'AI-assisted',
       ctaTitle: 'Have a project or an opportunity in mind?',
       ctaText:
         "I'm always happy to talk about technical challenges, career opportunities, or building something interesting together.",
@@ -79,6 +80,7 @@ export const locales = {
       sourceCode: 'Mã nguồn',
       liveDemo: 'Xem demo',
       liveDemoTitle: 'Demo / Trang chạy thật',
+      aiAssisted: 'AI hỗ trợ',
       ctaTitle: 'Bạn có dự án hoặc cơ hội muốn trao đổi?',
       ctaText:
         'Tôi luôn sẵn lòng trao đổi về các bài toán kỹ thuật, cơ hội nghề nghiệp, hoặc cùng nhau xây dựng những sản phẩm thú vị.',
